@@ -1,3 +1,4 @@
+import 'package:cross_platform_iot/pages/devices_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -84,7 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.devices),
               trailing: const Icon(Icons.arrow_forward),
               title: const Text('Devices'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DevicesPage()),
+                );
+              },
             ),
             const Divider(
               height: 0,
@@ -146,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.devices),
-            label: 'Devices',
+            label: 'Devices'
           ),
         ],
       ),
