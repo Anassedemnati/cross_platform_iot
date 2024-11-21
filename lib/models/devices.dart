@@ -1,4 +1,4 @@
-class Device {
+class Devices {
   final int id;
   final String name;
   final String typeOfDevice;
@@ -6,7 +6,7 @@ class Device {
   final String macAddress;
   final String ipAddress;
 
-  Device({
+  Devices({
     required this.id,
     required this.name,
     required this.typeOfDevice,

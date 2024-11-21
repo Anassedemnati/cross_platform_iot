@@ -1,5 +1,7 @@
 import 'package:cross_platform_iot/models/Device.dart';
+import 'package:cross_platform_iot/pages/device_detail_page.dart';
 import 'package:flutter/material.dart';
+
 
 final List<Device> devices = [
   Device(
@@ -46,7 +48,12 @@ class DeviceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell( 
       onTap: () {
-        print('Tapped on ${device.name}');
+         Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DeviceDetailPage( device: device),
+          ),
+        );
       }, 
       child: Card(
       child: ListTile(
