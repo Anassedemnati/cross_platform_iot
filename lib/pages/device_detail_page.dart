@@ -36,8 +36,8 @@ class DeviceDetailPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // print('Turn ${device.isOn ? 'Off' : 'On'}');
-
-                print('Turn ${device.isOn ? 'Off' : 'On'}');
+ 
+               Navigator.pop(context);
             
               
               },

@@ -1,4 +1,7 @@
+import 'package:cross_platform_iot/models/Device.dart';
+import 'package:cross_platform_iot/pages/device_detail_page.dart';
 import 'package:cross_platform_iot/pages/devices_page.dart';
+import 'package:cross_platform_iot/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +23,12 @@ class MyApp extends StatelessWidget {
             primary: Colors.blueAccent),
       ),
       home: const HomeScreen(),
+      routes: {
+        '/devices': (context) => const DevicesPage(),
+        '/device-detail': (context) => DeviceDetailPage(
+          device: ModalRoute.of(context)!.settings.arguments as Device),
+        '/settings': (context) => const SettingsPage(),
+      },
     );
   }
 }
@@ -32,7 +41,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
+  //int _currentIndex = 0;
   bool isLightOn = false;
   bool isGarageOpen = false;
   double temperature = 22.0;
@@ -74,7 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.dashboard),
               trailing: const Icon(Icons.arrow_forward),
               title: const Text('Dashboard'),
-              onTap: () {},
+              onTap: () {
+              },
             ),
             const Divider(
               height: 0,
@@ -86,10 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               trailing: const Icon(Icons.arrow_forward),
               title: const Text('Devices'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DevicesPage()),
-                );
+                Navigator.pushNamed(context, '/devices');
               },
             ),
             const Divider(
@@ -101,7 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.settings),
               trailing: const Icon(Icons.arrow_forward),
               title: const Text('Settings'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/settings');
+              },
             ),
           ],
         ),

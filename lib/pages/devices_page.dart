@@ -1,5 +1,4 @@
 import 'package:cross_platform_iot/models/Device.dart';
-import 'package:cross_platform_iot/pages/device_detail_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -48,12 +47,13 @@ class DeviceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell( 
       onTap: () {
-         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DeviceDetailPage( device: device),
-          ),
-        );
+        //  Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => DeviceDetailPage( device: device),
+        //   ),
+        // );
+        Navigator.pushNamed(context, '/device-detail', arguments: device);
       }, 
       child: Card(
       child: ListTile(
