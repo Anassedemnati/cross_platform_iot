@@ -1,5 +1,7 @@
 import 'package:cross_platform_iot/models/Device.dart';
+import 'package:cross_platform_iot/providers/device_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DeviceDetailPage extends StatelessWidget {
   final Device device;
@@ -8,9 +10,13 @@ class DeviceDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //get the device from the provider
+    final deviceFromProvider = Provider.of<DeviceProvider>(context)
+        .devices
+        .firstWhere((device) => device.id == device.id);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${device.name} Details',
+        title: Text('${deviceFromProvider.name} Details',
           style: const TextStyle(color: Colors.white)),
         backgroundColor: Theme.of(context).colorScheme.primary,
         
@@ -21,27 +27,26 @@ class DeviceDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Device Name: ${device.name}',
+              'Device Name: ${deviceFromProvider.name}',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Text('Type: ${device.typeOfDevice}'),
+            Text('Type: ${deviceFromProvider.typeOfDevice}'),
             const SizedBox(height: 8),
-            Text('IP Address: ${device.ipAddress}'),
+            Text('IP Address: ${deviceFromProvider.ipAddress}'),
             const SizedBox(height: 8),
-            Text('MAC Address: ${device.macAddress}'),
+            Text('MAC Address: ${deviceFromProvider.macAddress}'),
             const SizedBox(height: 8),
-            Text('Status: ${device.isOn ? "On" : "Off"}'),
+            Text('Status: ${deviceFromProvider.isOn ? "On" : "Off"}'),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // print('Turn ${device.isOn ? 'Off' : 'On'}');
- 
-               Navigator.pop(context);
-            
-              
+                // change the device status when the button is pressed
+                Provider.of<DeviceProvider>(context, listen: false)
+                  .toggleDevice(deviceFromProvider.id);
+          
               },
-              child: Text(device.isOn ? 'Turn Off' : 'Turn On'),
+              child: Text(deviceFromProvider.isOn ? 'Turn Off' : 'Turn On'),
             ),
           ],
         ),

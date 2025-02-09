@@ -2,7 +2,7 @@ class Device {
   final int id;
   final String name;
   final String typeOfDevice;
-  final bool isOn;
+  bool isOn;
   final String macAddress;
   final String ipAddress;
 
