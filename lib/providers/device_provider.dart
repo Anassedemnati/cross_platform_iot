@@ -46,4 +46,17 @@ class DeviceProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void addDevice(Device newDevice) {
+    _devices.add(newDevice);
+    notifyListeners();
+  }
+
+  void updateDevice(Device newDevice) {
+    final index = _devices.indexWhere((device) => device.id == newDevice.id);
+    if (index != -1) {
+      _devices[index] = newDevice;
+      notifyListeners();
+    }
+  }
 }

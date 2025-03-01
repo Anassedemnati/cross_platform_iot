@@ -1,5 +1,6 @@
 import 'package:cross_platform_iot/models/device.dart';
 import 'package:cross_platform_iot/pages/device_detail_page.dart';
+import 'package:cross_platform_iot/pages/device_form_page.dart';
 import 'package:cross_platform_iot/pages/devices_page.dart';
 import 'package:cross_platform_iot/pages/settings_page.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,14 @@ class MyApp extends StatelessWidget {
         '/device-detail': (context) => DeviceDetailPage(
           device: ModalRoute.of(context)!.settings.arguments as Device),
         '/settings': (context) => const SettingsPage(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/device-form') {
+          final device = settings.arguments as Device?;
+          return MaterialPageRoute(
+            builder: (context) => DeviceFormPage(device: device),
+          );
+        }
       },
     );
   }

@@ -15,12 +15,6 @@ class DeviceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell( 
       onTap: () {
-        //  Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => DeviceDetailPage( device: device),
-        //   ),
-        // );
         Navigator.pushNamed(context, '/device-detail', arguments: device);
       }, 
       child: Card(
@@ -40,6 +34,11 @@ class DeviceItem extends StatelessWidget {
             Text('MAC: ${device.macAddress}'),
           ],
         ),
+        trailing: IconButton(icon:  const Icon(Icons.edit) ,color: Theme.of(context).colorScheme.primary,
+          onPressed: () {
+            Navigator.pushNamed(context, '/device-form', arguments: device);
+          },
+        ),  
       ),
     ),
     );
@@ -65,6 +64,13 @@ class DevicesPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return DeviceItem(device: devices[index]);
         },
+      ),
+       floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/device-form');
+        },
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: const Icon(Icons.add),
       ),
     );
   }
