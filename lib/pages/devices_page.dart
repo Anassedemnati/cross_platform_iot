@@ -1,4 +1,4 @@
-import 'package:cross_platform_iot/models/Device.dart';
+import 'package:cross_platform_iot/models/device.dart';
 import 'package:cross_platform_iot/providers/device_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

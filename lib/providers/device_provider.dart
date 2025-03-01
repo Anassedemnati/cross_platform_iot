@@ -1,5 +1,5 @@
+import 'package:cross_platform_iot/models/device.dart';
 import 'package:flutter/material.dart';
-import '../models/Device.dart';
 
 class DeviceProvider with ChangeNotifier {
   List<Device> _devices = [

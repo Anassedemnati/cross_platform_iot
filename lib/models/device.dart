@@ -1,4 +1,6 @@
-class Device {
+import 'package:flutter/material.dart';
+
+class Device with ChangeNotifier{
   final int id;
   final String name;
   final String typeOfDevice;

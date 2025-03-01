@@ -1,4 +1,4 @@
-import 'package:cross_platform_iot/models/Device.dart';
+import 'package:cross_platform_iot/models/device.dart';
 import 'package:cross_platform_iot/pages/device_detail_page.dart';
 import 'package:cross_platform_iot/pages/devices_page.dart';
 import 'package:cross_platform_iot/pages/settings_page.dart';
