@@ -2,6 +2,8 @@ import 'package:cross_platform_iot/models/device.dart';
 import 'package:cross_platform_iot/pages/device_detail_page.dart';
 import 'package:cross_platform_iot/pages/device_form_page.dart';
 import 'package:cross_platform_iot/pages/devices_page.dart';
+import 'package:cross_platform_iot/pages/location_page.dart';
+import 'package:cross_platform_iot/pages/scan_page.dart';
 import 'package:cross_platform_iot/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
         '/device-detail': (context) => DeviceDetailPage(
           device: ModalRoute.of(context)!.settings.arguments as Device),
         '/settings': (context) => const SettingsPage(),
+        '/scan': (context) => const ScanPage(),
+        '/location': (context) => const LocationPage(), // Add this line
+
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/device-form') {
@@ -128,6 +133,32 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/settings');
+              },
+            ),
+            const Divider(
+              height: 0,
+              thickness: 0.5,
+              color: Colors.grey,
+            ),
+            ListTile(
+              leading: const Icon(Icons.qr_code_scanner),
+              trailing: const Icon(Icons.arrow_forward),
+              title: const Text('Scan Device'),
+              onTap: () {
+                Navigator.pushNamed(context, '/scan');
+              },
+            ),
+            const Divider(
+              height: 0,
+              thickness: 0.5,
+              color: Colors.grey,
+            ),
+            ListTile(
+              leading: const Icon(Icons.location_on),
+              trailing: const Icon(Icons.arrow_forward),
+              title: const Text('Location'),
+              onTap: () {
+                Navigator.pushNamed(context, '/location');
               },
             ),
           ],
